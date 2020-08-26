@@ -1,0 +1,17 @@
+.header {
+    position: fixed;
+    top:0;
+    left:0 ;
+    width: 100vw;
+    height: 11vh;
+    background-color: #1E2B57;
+    color: #FFFFFF;
+    font-size: 2vh;
+}
+
+.header h1 {
+    margin-top: 5vh;
+    margin-left: 4vw;
+    font-size: 3vh;
+    font-weight: 700;
+}
