@@ -1,25 +1,42 @@
-class Shape {
-  constructor(width, height, color) {
-    this.width = width;
-    this.height = height;
-    this.color = color;
-  }
+const yearBox = document.querySelector(".select-year");
+const monthBox = document.querySelector(".select-month");
 
-  draw() {
-    console.log(`drawing ${this.color} color of`);
+const leapYear = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+const notLeapYear = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+const date = new Date();
+let year = date.getFullYear();
+let month = date.getMonth() + 1;
+
+function checkYear() {
+  if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
+    createTbl(leapYear);
+  } else {
+    createTbl(notLeapYear);
   }
-  getArea() {
-    return this.width * this.height;
+}
+
+function selectYear() {
+  for (let y = 2013; y <= year; y++) {
+    const year = document.createElement("option");
+    yearBox.appendChild(year);
+    year.value = y;
+    year.innerHTML = y;
   }
 }
 
-class Square extends Shape {}
-
-const square = new Square(20, 20, "blue");
-square.getArea();
-
-class Triangle extends Shape {
-  getArea() {
-    return (this.width * this.height) / 2;
+function selectMonth() {
+  for (let m = 1; m < 13; m++) {
+    const month = document.createElement("option");
+    monthBox.appendChild(month);
+    month.value = `${m}월`;
+    month.innerHTML = `${m}월`;
   }
 }
+
+function init() {
+  selectYear();
+  selectMonth();
+}
+
+init();
